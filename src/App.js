@@ -1,25 +1,48 @@
-import logo from './logo.svg';
+import React, { Component } from 'react'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import purple from '@material-ui/core/colors/purple';
 import './App.css';
+import navbar from './components/Navbar';
+import home from './pages/home';
+import Login from './pages/login';
+import Navbar from './components/Navbar';
+import SurveyComponent from './pages/survey';
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#E5E5E5',
+    },
+    secondary: {
+      main: '#64E18F',
+    },
+  },
+});
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  
+  render() {
+    return (
+      <ThemeProvider theme={theme}>
+      
+        <div className="App">
+          <Router>
+            <Navbar/>
+            <div className="container">
+              <Switch>
+                <Route exact path='/' component = {home} />
+                <Route exact path='/login' component = {Login} />
+                <Route exact path='/survey' component = {SurveyComponent} />
+              </Switch>
+            </div>
+          </Router>
+        </div>
+      
+    </ThemeProvider>
+     
+    )
+  }
 }
 
-export default App;
+export default App
+
