@@ -56,20 +56,23 @@ class Login extends Component {
             email :this.state.email,
             password : this.state.password
         }
-        axios.post('/login', userData)
-            .then(res => {
-                console.log(res.data);
-                this.setState({
-                    loading : false
-                });
-                this.props.history.push('/');
-            })
-            .catch(err => {
-                this.setState({
-                    errors : err.response.data,
-                    loading : false
-                })
-            })
+        // axios.post('/login', userData)
+        //     .then(res => {
+        //         console.log(res.data);
+        //         this.setState({
+        //             loading : false
+        //         });
+        this.props.history.push({
+              pathname: '/survey',
+              state: {"person":this.state.email}// your data array of objects
+          });
+           // })
+            // .catch(err => {
+            //     this.setState({
+            //         errors : err.response.data,
+            //         loading : false
+            //     })
+            // })
     };
     handleChange = (event) => {
         this.setState({

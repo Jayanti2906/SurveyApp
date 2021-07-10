@@ -13,7 +13,8 @@ class SurveyComponent extends Component {
     super();
   }
   render() {
-    const json = {
+    const { state } = this.props.location
+    const json1 = {
       completedHtml: "<h3>Thank you for submitting your response. Your response {trust_leader_score} , {trust_team_score} and {trust_self_score}</h3>",
       pages: [
         {
@@ -58,9 +59,41 @@ class SurveyComponent extends Component {
       ],
       showQuestionNumbers: "off"
     };
-    const survey = new Survey.Model(json);
+    const json2 = {
+      completedHtml: "<h3>Thank you for submitting your response. Your response {trust_leader_score} , {trust_team_score} and {trust_self_score}</h3>",
+      pages: [
+        {
+          name: "page1",
+          elements: [
+            {
+              type: "rating",
+              name: "trust_leader_score",
+              title:
+                "I trust my leaders' intentions completely.",
+              isRequired: true,
+              rateMin: 0,
+              rateMax: 10,
+              minRateDescription: "(Most unlikely)",
+              maxRateDescription: "(Most likely)"
+            },
+          ]
+        }
+      ],
+      showQuestionNumbers: "off"
+    };
+    const survey1 = new Survey.Model(json1);
+    const survey2 = new Survey.Model(json2);
 
-    return <Survey.Survey model={survey} />;
+    if(state.person == "1")
+    {
+      return (
+        <Survey.Survey model={survey2} />
+      )
+    }
+    return (
+      <Survey.Survey model={survey1} />
+    )
+    
   }
 }
 

@@ -11,7 +11,7 @@ class Navbar extends Component {
                 <AppBar>
                     <Toolbar className="nav-container">
                         <Button color="inherit" component={Link} to='/login'>Login</Button>
-                        <Button color="inherit" component={Link} to='/'>Home</Button>
+                        <Button color="inherit" component={Link} to={{pathmane:'/',state:{"person":"Not logged in"}}}>Home</Button>
                         <Button color="inherit" component={Link} to='/survey'>Survey</Button>
                     </Toolbar>
                 </AppBar>
