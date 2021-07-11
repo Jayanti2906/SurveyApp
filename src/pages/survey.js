@@ -83,8 +83,23 @@ class SurveyComponent extends Component {
     };
     const survey1 = new Survey.Model(json1);
     const survey2 = new Survey.Model(json2);
+    
+    survey1
+    .onComplete
+    .add(function (sender) {
+        console.log(sender.data)
+        const metadata={
+                  "company name":state[0].companyName,
+                  "emp name":state[0].empName,
+                  "empId":state[0].empId,
+                  "surveyData": sender.data
+        }
+        console.log(metadata)
+    });
 
-    if(state.person == "1")
+
+    
+    if(state[0].companyName == "Softway")
     {
       return (
         <Survey.Survey model={survey2} />

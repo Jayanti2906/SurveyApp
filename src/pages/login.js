@@ -63,7 +63,7 @@ class Login extends Component {
         //             loading : false
         //         });
         this.props.history.push({
-              pathname: '/survey',
+              pathname: '/home',
               state: {"person":this.state.email}// your data array of objects
           });
            // })

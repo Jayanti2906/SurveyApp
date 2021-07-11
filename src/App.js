@@ -4,7 +4,7 @@ import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import purple from '@material-ui/core/colors/purple';
 import './App.css';
 import navbar from './components/Navbar';
-import home from './pages/home';
+import Home from './pages/home';
 import Login from './pages/login';
 import Navbar from './components/Navbar';
 import SurveyComponent from './pages/survey';
@@ -30,7 +30,7 @@ class App extends Component {
             <Navbar/>
             <div className="container">
               <Switch>
-                <Route exact path='/' component = {home} />
+                <Route exact path='/home' component = {Home} />
                 <Route exact path='/login' component = {Login} />
                 <Route exact path='/survey' component = {SurveyComponent} />
               </Switch>
