@@ -64,7 +64,7 @@ class Login extends Component {
         //         });
         this.props.history.push({
               pathname: '/home',
-              state: {"person":this.state.email}// your data array of objects
+              state: {"email":this.state.email}// your data array of objects
           });
            // })
             // .catch(err => {

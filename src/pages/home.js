@@ -44,20 +44,108 @@ class Home extends Component {
             companyName:'',
             empName:'',
             empId:'',
+            trustLeader:"",
+            trustTeam:"",
+            trustSelf:"",
+
+            inclusionLeader:"",
+            inclusionTeam:"",
+            inclusionSelf:"",
+
+            empathyLeader:"",
+            empathyTeam:"",
+            empathySelf:"",
+
+            empLeader:"",
+            empTeam:"",
+            empSelf:"",
+
+            forgiveLeader:"",
+            forgiveTeam:"",
+            forgiveSelf:"",
+
+            vulLeader:"",
+            vulTeam:"",
+            vulSelf:"",
+
+            mindsetLeader:"",
+            mindsetTeam:"",
+            mindsetSelf:"",
+
+            attitudeLeader:"",
+            attitudeTeam:"",
+            attitudeSelf:"",
+
+            commLeader:"",
+            commTeam:"",
+            commSelf:"",
+
+            hptLeader:"",
+            hptTeam:"",
+            hptSelf:"",
+
             loading: false,
             errors:{}
         }
     }
+    async componentDidMount(){
+        const url=`/ClientQuestionnaire/Softway`;
+        const response = await fetch(url);
+        const data = await response.json();
+        this.setState({content: data,calling: false });
+        this.setState({
+            trustLeader:data[0].trustLeader,
+            trustTeam:data[0].trustTeam,
+            trustSelf:data[0].trustSelf,
+
+            inclusionLeader:data[0].inclusionLeader,
+            inclusionTeam:data[0].inclusionTeam,
+            inclusionSelf:data[0].inclusionSelf,
+
+            empathyLeader:data[0].empathyLeader,
+            empathyTeam:data[0].empathyTeam,
+            empathySelf:data[0].empathySelf,
+
+            empLeader:data[0].empLeader,
+            empTeam:data[0].empTeam,
+            empSelf:data[0].empSelf,
+
+            forgiveLeader:data[0].forgiveLeader,
+            forgiveTeam:data[0].forgiveTeam,
+            forgiveSelf:data[0].forgiveSelf,
+
+            vulLeader:data[0].vulLeader,
+            vulTeam:data[0].vulTeam,
+            vulSelf:data[0].vulSelf,
+
+            mindsetLeader:data[0].mindsetLeader,
+            mindsetTeam:data[0].mindsetTeam,
+            mindsetSelf:data[0].mindsetSelf,
+
+            attitudeLeader:data[0].attitudeLeader,
+            attitudeTeam:data[0].attitudeTeam,
+            attitudeSelf:data[0].attitudeSelf,
+
+            commLeader:data[0].commLeader,
+            commTeam:data[0].commTeam,
+            commSelf:data[0].commSelf,
+
+            hptLeader:data[0].hptLeader,
+            hptTeam:data[0].hptTeam,
+            hptSelf:data[0].hptSelf,
+
+        })
+        console.log(this.state.content)
+        }
+
+
 
     handleSubmit = (event)=>{
         event.preventDefault();
         this.setState({
             loading: true
         });
-        const userData = {
-            companyName :this.state.companyName,
-            password : this.state.password
-        }
+        
         this.props.history.push({
               pathname: '/survey',
               state: [{"companyName":this.state.companyName},{"empName":this.state.empName}, {"empId":this.state.empId}]// your data array of objects
@@ -72,6 +160,7 @@ class Home extends Component {
     render() {
         const {classes} = this.props;
         const {errors, loading} = this.state;
+        const { state } = this.props.location
         return (
             <Grid container className={classes.form}>
                 
@@ -96,7 +185,7 @@ class Home extends Component {
                             id="companyName" 
                             name="companyName" 
                             label="Company Name" 
-                            type="companyName" 
+                            type= "companyName"
                             variant="outlined"
                             className={classes.textfield} 
                             value ={this.state.companyName} onChange={this.handleChange}

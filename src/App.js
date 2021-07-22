@@ -8,6 +8,7 @@ import Home from './pages/home';
 import Login from './pages/login';
 import Navbar from './components/Navbar';
 import SurveyComponent from './pages/survey';
+import Form from './pages/form';
 const theme = createTheme({
   palette: {
     primary: {
@@ -21,6 +22,7 @@ const theme = createTheme({
 
 class App extends Component {
   
+  
   render() {
     return (
       <ThemeProvider theme={theme}>
@@ -31,7 +33,8 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <Route exact path='/home' component = {Home} />
-                <Route exact path='/login' component = {Login} />
+                <Route exact path='/' component = {Home} />
+                <Route exact path='/form' component = {Form} />
                 <Route exact path='/survey' component = {SurveyComponent} />
               </Switch>
             </div>

@@ -10,9 +10,7 @@ class Navbar extends Component {
             <div>
                 <AppBar>
                     <Toolbar className="nav-container">
-                        <Button color="inherit" component={Link} to='/login'>Login</Button>
-                        {/* <Button color="inherit" component={Link} to={{pathmane:'/'}}>Home</Button>
-                        <Button color="inherit" component={Link} to='/survey'>Survey</Button> */}
+                        <Button color="inherit" component={Link} to='/home'>Home</Button>
                     </Toolbar>
                 </AppBar>
                 
